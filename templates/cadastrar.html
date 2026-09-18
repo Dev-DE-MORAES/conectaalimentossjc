@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Doações - Conecta Alimentos SJC
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo-area">
+
+        <div class="logo-icon">
+            🥗
+        </div>
+
+        <div>
+
+            <h1>Conecta Alimentos SJC</h1>
+
+            <span>
+                Fundo Social - Banco de Alimentos
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="/">
+            Início
+        </a>
+
+        <a 
+            href="/cadastrar"
+            class="active"
+         >
+            Cadastrar Doação 
+        </a>
+
+        <a
+            href="/doacoes"
+        >
+            Ver Doações
+        </a>
+
+    </nav>
+
+</header>
+   
+<main class="page-container">
+
+<form method="POST" action="/cadastrar">
+
+    <div class="form-group">
+
+        <label for="estabelecimento">
+            Estabelecimento
+        </label>
+
+        <input
+            type="text"
+            id="estabelecimento"
+            name="estabelecimento"
+            placeholder="Ex.: Restaurante Central"
+            required
+        >
+
+    </div>
+
+    <br>
+    <br>
+    
+    <div class="form-group">
+
+        <label for="alimento">
+            Alimento
+        </label>
+
+        <input
+            type="text"
+            id="alimento"
+            name="alimento"
+            placeholder="Ex.: Arroz"
+            required
+        >
+
+    </div>
+
+    <br>
+    <br>
+
+    <div class="form-group">
+
+        <label for="quantidade">
+            Quantidade
+        </label>
+
+        <input
+            type="text"
+            id="quantidade"
+            name="quantidade"
+            placeholder="Ex.: 5 kg"
+            required
+        >
+
+    </div>
+
+    <br>
+    <br>
+    <div class="form-group">
+
+        <label for="validade">
+            Data de validade
+        </label>
+
+        <input
+            type="date"
+            id="validade"
+            name="validade"
+            required
+        >
+
+    </div>
+
+    <br>
+    <br>
+    <div class="form-group">
+
+        <label for="endereco">
+            Local para retirada
+        </label>
+
+        <input
+            type="text"
+            id="endereco"
+            name="endereco"
+            placeholder="Ex.: Rua das Flores, 150 - Centro"
+            required
+        >
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <button
+        type="submit"
+        class="btn-submit"
+    >
+        ☑️ Cadastrar doação
+    </button>
+
+</form>
+
+</main>
+
+</body>
+
+</html>

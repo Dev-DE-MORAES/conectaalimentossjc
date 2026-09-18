@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Doações - Conecta Alimentos SJC
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="logo-area">
+
+        <div class="logo-icon">
+            🥗
+        </div>
+
+        <div>
+
+            <h1>Conecta Alimentos SJC</h1>
+
+            <span>
+                Fundo Social - Banco de Alimentos
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="/">
+            Início
+        </a>
+
+        <a href="/cadastrar">
+            Cadastrar Doação
+        </a>
+
+        <a
+            href="/doacoes"
+            class="active"
+        >
+            Ver Doações
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main class="page">
+
+
+    <div class="donations-container">
+
+
+        <div class="page-title">
+
+            <div class="page-title-icon">
+                📋
+            </div>
+
+            <div>
+
+                <h2>
+                    Doações Disponíveis
+                </h2>
+
+                <p>
+                    Confira os alimentos disponíveis
+                    para retirada.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="donations-list">
+
+
+            {% for doacao in doacoes %}
+
+
+            <div class="donation-card">
+
+
+                <div class="food-image">
+
+                    🍽️
+
+                </div>
+
+
+
+                <div class="donation-info">
+
+
+                    <h3>
+                        {{ doacao.alimento }}
+                    </h3>
+
+
+                    <p>
+                        🏪 {{ doacao.estabelecimento }}
+                    </p>
+
+
+                    <p>
+                        📦 Quantidade:
+                        {{ doacao.quantidade }}
+                    </p>
+
+
+                    <p>
+                        📅 Validade:
+                        {{ doacao.validade.strftime('%d/%m/%Y') }}
+                    </p>
+
+
+                    <p>
+                        📍 Retirada:
+                        {{ doacao.endereco }}
+                    </p>
+
+                    <p>
+                        📝 Cadastrado em:
+                        {{ doacao.data_cadastro.strftime('%d/%m/%Y') }}
+                    </p>
+
+                </div>
+
+
+                <div class="donation-action">
+
+
+                    {% if doacao.status == "Disponível" %}
+
+
+                        <span class="status available">
+
+                            Disponível
+
+                        </span>
+
+
+                        <a
+                            href="/reservar/{{ doacao.id }}"
+                            class="btn-reserve"
+                        >
+
+                            ♡ Reservar
+
+                        </a>
+
+
+                    {% else %}
+
+
+                        <span class="status reserved">
+
+                            Reservado
+
+                        </span>
+
+
+                        <button
+                            class="btn-reserve disabled"
+                            disabled
+                        >
+
+                            Reservado
+
+                        </button>
+
+
+                    {% endif %}
+
+
+                </div>
+
+
+            </div>
+
+
+            {% endfor %}
+
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+</body>
+
+</html>
